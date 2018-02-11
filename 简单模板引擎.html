@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎</title>
+</head>
+<body>
+    <script>
+        function stringFormat(string){
+            //拿到所有除了string以外的所有参数
+            var params = [].slice.call(arguments,1)
+            //将字符串中的{n}替换为params[n]
+            var regex = /\{(\d+)\}/g
+            string = string.replace(regex,function(){
+                var index = arguments[1]
+                return params[index]
+            })
+           return string
+        }
+
+        console.log(stringFormat('Hi,{0}','Frank')) //Hi,Frank
+        console.log(stringFormat('Hi,{1}','Frank','Tommy')) //Hi,Tommy
+        console.log(stringFormat('Hi,{0} and {1}','frank','Tommy')) //Hi,frank and Tommy
+    </script>
+</body>
+</html>
