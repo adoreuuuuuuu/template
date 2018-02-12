@@ -67,8 +67,8 @@ var TemplateEngine = function(html,options) {
         //如果是以<%开头，以%>结尾，并且里面是以if|for|else|switch|case|break|{|}开头的，就直接照抄，不用push；如果只是以<%开头，以%>结尾的就push
         js? (code += line.match(reExp) ? line + '\n' : 'Arr.push(' + line + ');\n') :
         //如果不是以<%开头，以%>结尾，就直接push进去，并且对双引号进行转义
-        return add;
             (code += line != '' ? 'Arr.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
+            return add;
     }
     while(match = re.exec(html)) {
         //添加非逻辑字符串，cursor为字符串节点的位置，match.index为所匹配的match的长度，循环相加应用slice方法就可以得到非逻辑字符串
